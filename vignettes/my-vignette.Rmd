@@ -1,0 +1,75 @@
+---
+title: "my-vignette"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{my-vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(ryx)
+library(MASS)
+```
+
+# ryx Package
+
+## Introduction 
+
+The ryx package give you tools to calculate and visualize correlations
+within a given data set. The main function is the ryx() function. Additional 
+functions to support ryx include print.ryx(), summarize.ryx() and plot.ryx().
+
+## Main Function 
+
+The ryx function prints a table of correlations between a dependent variable y and one or more independent x variables. The format of the function is ryx(data, y, x, digits=3). Data is a data frame, y is the name of a numeric variable in the data frame, x is a character vector with the names of one or more numeric variables in the data frame, digits indicates the number of decimal places to print (3 is the default). If the user does not indicate x, the function will return the correlation of y with every other numeric variable in the data frame. 
+
+### Example 
+
+```{r example}
+ryx(mtcars, y = "mpg", x = c("hp", "wt", "disp", "cyl", "am", "gear"))
+```
+
+## Print Function 
+
+The print function takes correlations created by the ryx function and prints a table of correlations that notes when the p value is < 2e-16. 
+
+### Example 
+
+```{r}
+x <- ryx(Boston, y="medv")
+x
+```
+
+
+## Summary Function 
+
+The summary function takes correlations created by the ryx function and prints
+a summary of the median correlation, the range,and how many variables are significant
+at the p < 0.05 level. 
+
+### Example 
+
+```{r}
+x <- ryx(Boston, y="medv")
+summary(x)
+```
+
+
+## Plot Function 
+
+The plot function takes correlations created by the ryx function and prints a plot of r values.
+
+### Example 
+
+```{r}
+x <- ryx(Boston, y="medv")
+plot(x)
+```
