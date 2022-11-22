@@ -1,10 +1,12 @@
 
 # ryx
 
+![](ryx.jpg)
+
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of ryx is to ...
+The goal of ryx is to easily create, summarize and plot correlations. 
 
 ## Installation
 
